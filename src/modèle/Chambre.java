@@ -6,13 +6,14 @@ import controller.*;
 public class Chambre
 {
     private Connexion connect;
-    public Vector<Vector> result;
     public String requete = "SELECT * FROM service;";
     public ArrayList resultat;
+    public Vector<Vector>  result;
 
-    public Chambre(Connexion con) {
+    public Chambre(Connexion con)
+    {
         connect = con;
-        result = actualiser(con);
+        resultat = actualiser(con);
     }
 
     /**
@@ -21,9 +22,8 @@ public class Chambre
      * @param new_requete
      * @return
      */
-    public Vector<Vector> recherche(Connexion connect, String new_requete)
+    public ArrayList recherche(Connexion connect, String new_requete)
     {
-        Vector<Vector> result = new Vector<Vector>();
         try
         {
             resultat = connect.remplirChampsRequete(new_requete);
@@ -32,7 +32,7 @@ public class Chambre
         {
             System.out.println("erreur lors de la recherche : " + e);
         }
-        return result;
+        return resultat;
     }
 
     public void modifier(Connexion connect, String requete)
@@ -48,10 +48,10 @@ public class Chambre
     }
 
 
-    public Vector<Vector> actualiser(Connexion con)
+    public ArrayList actualiser(Connexion con)
     {
-        result = recherche(con, "SELECT * FROM chambre;");
-        return result;
+        resultat = recherche(con, "SELECT * FROM chambre;");
+        return resultat;
     }
 
 

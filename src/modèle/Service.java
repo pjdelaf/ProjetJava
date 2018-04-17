@@ -9,10 +9,9 @@ public class Service
 {
     private Connexion connect;
     public Vector<Vector> result;
-    public String requete = "SELECT * FROM chambre;";
+    public String requete = "SELECT * FROM service;";
     public ArrayList  resultat;
 
-    //bonjour
     //Constructeur par défaut
 
     public Service(Connexion con){
