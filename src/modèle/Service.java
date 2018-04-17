@@ -10,24 +10,22 @@ public class Service
     private Connexion connect;
     public Vector<Vector> result;
     public String requete = "SELECT * FROM chambre;";
-    public ArrayList<String> resultat;
+    public ArrayList  resultat;
 
-
+    //bonjour
+    //Constructeur par défaut
 
     public Service(Connexion con){
         connect = con;
         result = actualiser(con);
+
     }
 
-    public Vector<Vector> recherche(Connexion connect, String new_requete)
-    {
+    public Vector<Vector> recherche(Connexion connect, String new_requete) {
         Vector<Vector> result = new Vector<Vector>();
-        try
-        {
+        try {
             resultat = connect.remplirChampsRequete(new_requete);
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("erreur lors de la recherche : " + e);
         }
         return result;
@@ -43,31 +41,25 @@ public class Service
 
 
 
-    public Vector<Vector> actualiser(Connexion con)
-    {
+    public Vector<Vector> actualiser(Connexion con) {
         result = recherche(con, "SELECT * FROM service;");
         return result;
     }
 
     public void ajouter(Connexion con, String requete) {
-        try
-        {
+        try {
             connect.execute(requete);
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("erreur lors de l'ajout : " + e);
         }
     }
 
     public void supprimer(Connexion con, String requete) {
-        try
-        {
+        try {
             connect.execute(requete);
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println("erreur lors de la suppression du service : " + e);
         }
     }
+
 }
