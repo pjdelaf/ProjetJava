@@ -9,6 +9,22 @@ package projet.modele;
  *
  * @author mlcmi
  */
-public class Medecin {
+public class Medecin extends Employe{
+    private String specialite;
+    private boolean un_malade_hospitalise;
     
+    //constructeur  par defaut
+    public Medecin(){
+        super();
+        String specialite=null;
+        boolean un_malade_hospitalise=false;
+    }
+    
+    //ACCESSEUR
+    public String GetSpecialite() {
+        return specialite;
+    }
+    public boolean GetUn_malade_hospitalise(){
+        return un_malade_hospitalise;
+    }
 }

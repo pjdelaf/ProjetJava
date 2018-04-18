@@ -13,7 +13,12 @@ import java.util.Scanner;
  */
 public class Console {
     Scanner in = new Scanner (System.in); //pour lire au clavier
-  
+
+
+    public Console() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     @Override
     public String toString(){
         String s;

@@ -4,9 +4,11 @@
  * and open the template in the editor.
  */
 package projet.vue;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import static java.lang.System.console;
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
+//import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -74,9 +76,9 @@ pan.add(b4);
 
 // rendre la fenetre visible 
 
-this.setVisible(true);  
+console.setVisible(true);  
 
- //getter des boutons pour les réutiliser notamment dans Testlaby
+ //getter des boutons pour les réutiliser notamment dans Test
 
     /**
      *
@@ -113,4 +115,9 @@ this.setVisible(true);
         
     return b4;
 }
+
+    @Override
+    public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -7,8 +7,10 @@ package projet.controleur;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import static java.lang.System.console;
 import projet.vue.Console;
+import projet.vue.Graphique;
 
 /**
  *
@@ -16,10 +18,14 @@ import projet.vue.Console;
  */
 public class Test {
 
+    private static Graphique fen;
+    private static Console console;
+    
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args, String nomficher) {
         // TODO code application logic here
         fen= new Console (); 
         console= new Console ();//instancie la console
