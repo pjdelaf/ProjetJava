@@ -6,6 +6,7 @@
 package projet.vue;
 
 import java.util.Scanner;
+import projet.controleur.Test;
 
 /**
  *
@@ -49,6 +50,10 @@ public class Console {
         return 0;
         }
       
+    }
+
+    public void affiche(Test testgestion) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
     

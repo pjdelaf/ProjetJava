@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import static java.lang.System.console;
+import projet.modele.Connexion;
 import projet.vue.Console;
 import projet.vue.Graphique;
 
@@ -31,7 +32,7 @@ public class Test {
         
         console= new Console ();//instancie la console
         console.toString();
-        Test testgestion;//pour la gestion de la bdd de l'hopital
+        Test testgestion = null;//pour la gestion de la bdd de l'hopital
       //  testgestion= new Test(new File(nomficher)); //instancie la bdd à partir du fichier
         console.affiche (testgestion);
         
@@ -77,13 +78,7 @@ public class Test {
     
 }
 
-    public void rechercher(){
-        
-    }
-    public void afficher(){
-        
-    }
-    public void 
+   
 }
 
         
