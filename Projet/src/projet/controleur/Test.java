@@ -27,47 +27,63 @@ public class Test {
      */
     public static void main(String[] args, String nomficher) {
         // TODO code application logic here
-        fen= new Console (); 
+        Connexion connect=null;
+        
         console= new Console ();//instancie la console
         console.toString();
-        Testgestion test;
-        test= new Testgestion (new File(nomficher)); //instancie la bdd à partir du fichier
-        console.affiche (o);
+        Test testgestion;//pour la gestion de la bdd de l'hopital
+      //  testgestion= new Test(new File(nomficher)); //instancie la bdd à partir du fichier
+        console.affiche (testgestion);
         
         class BoutonListener implements ActionListener {
             @Override
             public void actionPerformed (ActionEvent arg0){
-                    test.afficher();
+                    testgestion.rechercher();
         }
         }
          class BoutonListener2   implements ActionListener {
             @Override
             public void actionPerformed (ActionEvent arg0){
-                    test.inserer();
+                    testgestion.maj();
         }
         }
           class BoutonListener3 implements ActionListener {
             @Override
             public void actionPerformed (ActionEvent arg0){
-                    test.modifier();
+                    testgestion.afficher();
         }
         }
            class BoutonListener4 implements ActionListener {
             @Override
             public void actionPerformed (ActionEvent arg0){
-                    test.supprimer();
+                    testgestion.supprimer();
         }
+            class BoutonListener5 implements ActionListener {
+            @Override
+            public void actionPerformed (ActionEvent arg0){
+                    testgestion.modifier();
         }
+            }   
+           }
          fen.getb1().addActionListener (new BoutonListener());
          fen.getb2().addActionListener (new BoutonListener2());
          fen.getb3().addActionListener (new BoutonListener3());
-         fen.get4().addActionListener (new BoutonListener4());
-            
+         fen.getb4().addActionListener (new BoutonListener4());
+         fen.getb5().addActionListener (new BoutonListener5());  
           
             
-           char choix = console.menu ();//affichage du menu de gestion de l hopital en mode console
-    }
+           char choix = (char) console.menu ();//affichage du menu de gestion de l hopital en mode console
     
+    
+}
+
+    public void rechercher(){
+        
+    }
+    public void afficher(){
+        
+    }
+    public void 
 }
 
         

@@ -22,11 +22,12 @@ public class Graphique extends JFrame implements ActionListener{
     private JPanel pan; //panneau
     private JButton button [][]; //MATRICE DE BOUTONS
     private Object o;
-    private JButton b1;//pour afficher une requete
-    private JButton b2;//pour inserer une nouvelle
-    private JButton b3;//pour la modifier
+    private JButton b1;//pour rechercher une requete ou une information 
+    private JButton b2;//pour mettre à jour la base de donnees
+    private JButton b3;//pour afficher une requete
     private JButton b4;//pour la supprimer
-
+    private JButton b5;//pour la modifier
+    private JButton b6;//pour quitter 
    
     
     //constructeur
@@ -37,23 +38,6 @@ public class Graphique extends JFrame implements ActionListener{
         pan= new JPanel ();//instanciation du panneau
         getContentPane().add(pan);//ajout du panneau dans la fenetre
     }
-
-/**
-     *
-     * @param o
-     */
- 
-//methode pour afficher
-//Ajout des buttons dans le panneau
-public void affiche(Object o){
-pan.setLayout(new BoxLayout(pan.getTailleY(), pan.getTailleX ()));
-for (int i=0; i<pan.getTailleY(); i++){
-     for (int j=0; o.getTailleX(); i++){
-         button[i][j]=new JButton ();//on instancie chaque Bouton
-          pan.add(button [i][j]);
-}
-}
-}
     
 //instancie les boutons
  
@@ -74,9 +58,6 @@ pan.add(b4);
 
 */
 
-// rendre la fenetre visible 
-
-console.setVisible(true);  
 
  //getter des boutons pour les réutiliser notamment dans Test
 
@@ -118,6 +99,10 @@ console.setVisible(true);
 
     @Override
     public void actionPerformed(ActionEvent ae) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Object getb5() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

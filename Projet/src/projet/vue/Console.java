@@ -13,11 +13,8 @@ import java.util.Scanner;
  */
 public class Console {
     Scanner in = new Scanner (System.in); //pour lire au clavier
+    private Object Int;
 
-
-    public Console() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
     
     @Override
     public String toString(){
@@ -27,20 +24,31 @@ public class Console {
     }
     
     //AFFICHAGE MENU + RETOUR du choix
-    public char menu (){
-        String unchoix;
+    public int menu (){
+        int unchoix;
         
         System.out.println(" Bonjour et Bienvenu! ");
         
         System.out.println("Appuyer sur 0 pour Rechercher une information sur la Gestion de l'hôpital");
-        System.out.println("Appuyer sur 1 pour Insérer une nouvelle information");
-        System.out.println("Appuyer sur 2 pour Modifier une information");
+        System.out.println("Appuyer sur 1 pour Mettre à jour la Base de Donnée de l'Hôpital");
+        System.out.println("Appuyer sur 2 pour Afficher une information");
         System.out.println("Appuyer sur 3 pour Supprimer une information");
-        System.out.println("Appuyer sur 4 pour Quitter");
+        System.out.println("Appuyer sur 4 pour modifier une information");
+        System.out.println("Appuyer sur 5 pour Quitter");
         
         System.out.println("Veuillez entrer votre choix: ");
-        unchoix=in.next();
-        return unchoix.charAt(0);
+        unchoix=in.nextInt();
+        
+      //blindage du choix de l'interface
+        if (unchoix<5){
+           return unchoix; 
+        }
+        else {
+            System.out.println("Error! Choississez une Option");
+            System.out.println ("Veuillez entrer un nombre entre 0 et 5");
+        return 0;
+        }
+      
     }
 }
     
