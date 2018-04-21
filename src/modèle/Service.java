@@ -23,7 +23,7 @@ public class Service
     public Vector<Vector> recherche(Connexion connect, String new_requete) {
         Vector<Vector> result = new Vector<Vector>();
         try {
-            resultat = connect.remplirChampsRequete(new_requete);
+            result = connect.remplirChampsRequete(new_requete);
         } catch (SQLException e) {
             System.out.println("erreur lors de la recherche : " + e);
         }

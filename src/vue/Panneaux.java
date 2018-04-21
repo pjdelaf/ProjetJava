@@ -3,11 +3,12 @@ package vue;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
 
 
 public class Panneaux
 {
-    private JPanel connexion;
+    public JPanel connexion;
     private JPanel West;
     private JPanel North;
     private JPanel East;
@@ -23,28 +24,31 @@ public class Panneaux
     private JRadioButton àDistanceRadioButton;
     private JButton validationButton ;
     public JFrame frame;
+    private boolean valider;
+
     public Panneaux() {
-
-        validationButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e)
-            {
-                JOptionPane.showMessageDialog(null, "validation en cours ");
-                Pagedaccueil pda = new Pagedaccueil();
-                frame.removeAll();
-                //frame.add();
-
-            }
-        });
-
-
-    }
-            public static void main(String[] arg)
-        {
         JFrame frame = new JFrame();
-        frame.setContentPane(new Panneaux().connexion);
+        frame.setContentPane(connexion);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+        valider = false;
+        }
+        public boolean validation()
+            {
+                validationButton.addActionListener(new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    valider= true;
+                }
+            });
+                return valider ;
+            }
+
+
+
+
     }
-}
+

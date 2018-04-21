@@ -26,7 +26,7 @@ public class Chambre
     {
         try
         {
-            resultat = connect.remplirChampsRequete(new_requete);
+            result = connect.remplirChampsRequete(new_requete);
         }
         catch (SQLException e)
         {

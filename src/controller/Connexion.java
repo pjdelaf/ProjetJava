@@ -2,9 +2,11 @@ package controller;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Vector;
 
 public class Connexion
 {
+
     /**
      * Attributs prives : connexion JDBC, statement, ordre requete et resultat
      * requete
@@ -152,7 +154,7 @@ public class Connexion
      * @return
      * @throws java.sql.SQLException
      */
-    public ArrayList remplirChampsRequete(String requete) throws SQLException {
+    public Vector<Vector> remplirChampsRequete(String requete) throws SQLException {
         // récupération de l'ordre de la requete
         rset = stmt.executeQuery(requete);
 
@@ -163,27 +165,22 @@ public class Connexion
         int nbColonne = rsetMeta.getColumnCount();
 
         // creation d'une ArrayList de String
-        ArrayList<String> liste;
-        liste = new ArrayList<String>();
+        Vector<Vector> liste;
+        liste = new Vector<Vector>();
 
         // tant qu'il reste une ligne
         while (rset.next()) {
-            String champs;
-            champs = rset.getString(1); // ajouter premier champ
+            Vector ligne = new Vector();
 
             // Concatener les champs de la ligne separes par ,
             for (int i = 1; i < nbColonne; i++) {
-                champs = champs + "," + rset.getString(i + 1);
+                ligne.add(rset.getString(i));
             }
 
-            // ajouter un "\n" à la ligne des champs
-            champs = champs + "\n";
-
-            // ajouter les champs de la ligne dans l'ArrayList
-            liste.add(champs);
+            liste.add(ligne);
         }
 
-        // Retourner l'ArrayList
+        // Retourner un vecteur
         return liste;
     }
 

@@ -4,10 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import controller.Connexion;
 
 public class Pagedaccueil extends JFrame implements ActionListener
 {
-    private JPanel MenuDaccueil;
+    public JPanel MenuDaccueil;
     private JPanel North;
     private JPanel South;
     private JPanel Center;
@@ -16,7 +17,8 @@ public class Pagedaccueil extends JFrame implements ActionListener
     private JButton GENERATIONButton;
     private JButton déconnexionButton;
 
-    public Pagedaccueil()
+
+    public Pagedaccueil(Connexion connexion)
     {
         this.setTitle("menu d'accueil");
         this.setSize(500,300);
@@ -39,8 +41,8 @@ public class Pagedaccueil extends JFrame implements ActionListener
 
     public static void main(String[] args)
     {
-        Pagedaccueil pda = new Pagedaccueil();
-        pda.setVisible(true);
+        //Pagedaccueil pda = new Pagedaccueil(Connexion);
+        //pda.setVisible(true);
     }
 
 
