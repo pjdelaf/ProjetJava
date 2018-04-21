@@ -14,11 +14,11 @@ import java.util.Vector;
  * @author mlcmi
  */
 public class Service extends Batiment {
-    private Connexion connect;
-    private ArrayList <ArrayList > resultat;
+    protected Connexion connect;
+    protected ArrayList <ArrayList > resultat;
     public String requete;
-    private String code_service;
-    private float nb_moyen_de_lits;
+    protected String code_service;
+    protected float nb_moyen_de_lits;
     
    
     
@@ -36,7 +36,7 @@ public class Service extends Batiment {
          return code_service;
      }
      
-     public float GetNb_moyen_de_lits(){
+     public float GetNb_moyen_de_lits(int i){
          return nb_moyen_de_lits;
      }
      
@@ -53,6 +53,7 @@ public class Service extends Batiment {
         ArrayList <ArrayList> resultat = new ArrayList<ArrayList>();
         try {
             resultat = connect.remplirChampsRequete(requete);
+            
         }catch (SQLException e){
             System.out.println("Erreur: "+e);
         }
@@ -60,11 +61,18 @@ public class Service extends Batiment {
     }
      
     
+    
      
      //maj pour mise à jour
      public ArrayList<ArrayList> maj (Connexion connect){
          resultat=rechercher (connect, "SELECT * FROM Service");
                  return resultat;
+                 ArrayList=0;
+                   for(int i=0;i<ArrayList.size(); i++){
+                       GetCode_service();
+                       GetNb_moyen_de_lits(i);
+                   }
+        return null;
      }
      
      public ArrayList <ArrayList> afficher (Connexion connect){
