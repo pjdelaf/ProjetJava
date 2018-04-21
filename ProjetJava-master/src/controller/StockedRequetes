@@ -1,0 +1,94 @@
+package controller;
+import java.sql.*;
+import java.util.*;
+/**
+ *
+ * @author braga
+ */
+public class StockedRequete {
+// Attributs
+  private Connexion conn;
+  //Tableau de requêtes exemples
+  private String Tabrequests[];
+
+//Listes des requêtes
+//"Prénom et nom des malades affiliés à la mutuelle « MAAF »."; 
+private String requete0 = "SELECT nom,prenom FROM malade WHERE mutuelle='maaf';" ;
+
+//"Prénom et nom des infirmier(ères) travaillant pendant la rotation de nuit.";
+private String requete1 = "SELECT DISTINCT nom, prenom FROM employe JOIN (infirmier ON employe.numero=infirmier.numero) WHERE rotation='nuit';";
+
+//"Donner pour chaque service, son nom, son bâtiment, ainsi que les prénom, nom et spécialité de son directeur.";
+private String requete2 = "SELECT DISTINCT ser.nom , ser.batiment, docteur.specialite, emp.nom, emp.prenom FROM ((service AS ser JOIN (employe AS emp JOIN docteur ON docteur.numero=employe.numero) ON ser.directeur=emp.numero) ;";
+
+//"Le nombre de malades affiliés à une mutuelle dont le nom commence par « MN... », par  le code du service
+private String requete3 = "SELECT COUNT(nom), code_service FROM(SELECT  * FROM (malade JOIN hospitalisation ON malade.numero=hospitalisation.no_malade) WHERE malade.mutuelle LIKE ‘MN %’)AS malhos GROUP BY malhos.code_service ;";
+
+//Quelle est la moyenne des salaires des infirmiers(ères) par service ? 
+private String requete4 = "SELECT DISTINCT ser.code, ser.nom, AVG(salaire) FROM (infirmier AS inf JOIN service AS ser ON inf.code_service=ser.code) GROUP BY ser.code ;";
+
+//Pour chaque service du bâtiment « A » de l’hôpital, quel est le nombre moyen de lits par chambre ?
+private String requete5 = "SELECT ser.code, AVG(nb_lits) FROM (chambre as ch JOIN (SELECT * FROM service WHERE batiment =’A’ ) AS ser ON ch.code_service=ser.code) GROUP BY ser.code ;";
+
+//Prénom et nom des docteurs  par specialite
+private String requete6 = "SELECT nom,prenom,specialite FROM (docteur JOIN employe ON docteur.numero=employe.numero) ORDER BY specialite ;";
+
+//Nombre de docteurs par specialité
+private String requete7 = "SELECT specialite, COUNT(nom) FROM (docteur JOIN employe ON docteur.numero=employe.numero)GROUP BY specialite ;";
+
+//Nombre d’infirmiers par service
+private String requete8 = "SELECT service.nom, COUNT(infemp.nom)FROM (SELECT employe.nom, code_service FROM (infirmier JOIN employe ON infirmier.numero=employe.numero)) AS infemp JOIN service ON infemp.code_service=service.code) GROUP BY service.nom ;";
+
+//Nombre de chambres surveillées par infirmier
+private String requete9 = "SELECT nom, prenom, COUNT(no_chambre) FROM (employe JOIN chambre ON employe.numero=chambre.surveillant) GROUP BY surveillant ;";
+
+//Initialise resultat pour une future méthode
+private ResultSet resultat=null;
+
+
+//Méthodes
+// Méthode qui crée le tableau de requêtes qui sont sous forme de String
+//
+public String[] CreaTabrequest(){
+    for (int i=0;i<9;i++){
+            Tabrequests[0]=requete0;
+            Tabrequests[1]=requete1;
+            Tabrequests[2]=requete2;
+            Tabrequests[3]=requete3;
+            Tabrequests[4]=requete4;
+            Tabrequests[5]=requete5;
+            Tabrequests[6]=requete6;
+            Tabrequests[7]=requete7;
+            Tabrequests[8]=requete8;
+            Tabrequests[9]=requete9;
+        }
+    return Tabrequests;
+    }
+/**
+     * Méthode qui demande quelle requête choisir entre la 0 jusqu'à la 9.
+     * Le choix est symbolisé par un entier.
+     */
+    public int choix(){
+        int choix=11;
+        while((choix>10)&&(choix<0)){
+        Scanner Clavier=new Scanner(System.in);
+        choix=Clavier.nextInt();
+        }
+        return(choix);
+    }
+
+//Méthode qui à partir du choix et du tableau de requêtes, rend le Résultat de la requête demandée
+public ResultSet exempleRequetes(int choix){
+        for (int i=0;i<choix;i++){
+            try{
+            Statement statement;
+                statement = conn.createStatement();
+            ResultSet resultat= statement.executeQuery(Tabrequests[choix]);
+            }
+            catch (SQLException e){
+                System.out.println("Error.");
+                ResultSet resultat=null;
+            }
+        }
+    return resultat;}
+}
