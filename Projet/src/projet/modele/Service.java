@@ -5,6 +5,7 @@
  */
 package projet.modele;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 
@@ -40,15 +41,23 @@ public class Service extends Batiment {
      }
      
      public ArrayList <ArrayList> rechercher (Connexion connect){
-         ArrayList <ArrayList> resultat = new ArrayList<ArrayList>();
-         try{
-             resultat=connect.remplirChampsRequete(requete);
-         }
-         catch (SQLEXception e){
-             System.out.println("Erreur: "+e);
-         }
-        return null;
+        return rechercher(connect, "SELECT * FROM Service");
      }
+
+    /**
+     *
+     * @param connect the value of connect
+     * @param select__from_Service the value of select__from_Service
+     */
+    public ArrayList <ArrayList> rechercher(Connexion connect, String select__from_Service) {
+        ArrayList <ArrayList> resultat = new ArrayList<ArrayList>();
+        try {
+            resultat = connect.remplirChampsRequete(requete);
+        }catch (SQLException e){
+            System.out.println("Erreur: "+e);
+        }
+        return null;
+    }
      
     
      
@@ -63,7 +72,7 @@ public class Service extends Batiment {
          try{
              resultat=connect.remplirChampsRequete(requete);
          }
-         catch (SQLEXception e){
+         catch (SQLException e){
              System.out.println("Erreur: "+e);
          }
         return resultat;
@@ -71,21 +80,22 @@ public class Service extends Batiment {
      
       public ArrayList <ArrayList> supprimer (Connexion connect){
          try {
-             connect.execute(requete);
+             connect.executeUpdate(requete);
          }
          
-         catch (SQLEXception e){
+         catch (SQLException e){
              System.out.println("Erreur: "+e);
          }
         return resultat;
      }
    
+      
        public ArrayList <ArrayList> modifier (Connexion connect){
          ArrayList <ArrayList> resultat = new ArrayList<ArrayList>();
          try{
              resultat=connect.remplirChampsRequete(requete);
          }
-         catch (SQLEXception e){
+         catch (SQLException e){
              System.out.println("Erreur: "+e);
          }
         return resultat;
