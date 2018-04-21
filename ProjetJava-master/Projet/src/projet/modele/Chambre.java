@@ -18,10 +18,18 @@ public class Chambre extends Service {
     private float nb_moyen_de_lits;
     
     //constructeur par defaut
+
+    /**
+     *
+     */
+
     public Chambre(){
-        super();
-        
-        nb_moyen_de_lits=0;
+       this.requete=requete;
+       this.connect=connect;
+       this.code_service=code_service;
+       this.nb_moyen_de_lits=nb_moyen_de_lits;
+       this.resultat=resultat;
+    
         
     }
     //accesseur

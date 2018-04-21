@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import static java.lang.System.console;
+import java.sql.SQLException;
 import projet.modele.Connexion;
 import projet.vue.Console;
 import projet.vue.Graphique;
@@ -35,6 +36,22 @@ public class Test {
         Test testgestion = null;//pour la gestion de la bdd de l'hopital
       //  testgestion= new Test(new File(nomficher)); //instancie la bdd à partir du fichier
         console.affiche (testgestion);
+        console.setVisible(true);
+        String nameDatabase;
+        String loginDatabase;
+        String passwordDatabase;
+       try{
+           
+       }
+        
+       catch (SQLException and ClassNotFoundException e){
+           System.out.println("Erreur: "+e);
+           
+       } 
+        
+        
+        
+        
         
         class BoutonListener implements ActionListener {
             @Override
