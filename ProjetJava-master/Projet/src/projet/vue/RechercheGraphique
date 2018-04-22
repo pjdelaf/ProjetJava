@@ -1,0 +1,55 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vue;
+
+import java.awt.*;
+import javax.swing.*;
+
+
+/**
+ *
+ * @author braga
+ */
+public class RechercheGraphique extends JFrame
+{
+    //Composants nécessaires
+    public JPanel Recherchefenetre;
+    private JLabel Recherche;
+    private JTextField RecherchetextField;
+    private JButton ValiderButton;
+    private JButton retourButton;
+    
+    //Constructeur de l'écran de recherche
+        public RechercheGraphique(){
+        
+        //Initialisation des composants
+        JFrame Recherchefenetre = new JFrame();
+        JButton ValiderButton=new JButton("Valider");
+        JButton retourButton= new JButton("Acceuil");
+        JLabel Recherche= new JLabel("Recherche\n");
+        JTextField RecherchetextField = new JTextField();
+        RecherchetextField.setColumns(10);
+        
+        //Initialisation du Layout
+        GridLayout gl= new GridLayout(2,2);
+        gl.setHgap(100);
+        gl.setVgap(100);
+        
+        //Mise en forme de la fenêtre
+        Recherchefenetre.setTitle("Ecran de Recherche");
+        Recherchefenetre.setSize(500,300);
+        Recherchefenetre.setLayout(gl);
+        
+        //Ajout de tous les composants dans la fenêtre
+        Recherchefenetre.add(Recherche);
+        Recherchefenetre.add(RecherchetextField);
+        Recherchefenetre.add(ValiderButton);
+        Recherchefenetre.add(retourButton);
+        
+        //Rend visible la fenêtre
+        Recherchefenetre.setVisible(true);       
+    }
+}
