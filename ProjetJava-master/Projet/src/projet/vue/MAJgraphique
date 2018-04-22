@@ -1,0 +1,66 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package vue;
+
+import java.awt.*;
+import javax.swing.*;
+
+/**
+ *
+ * @author braga
+ */
+public class MAJgraphique extends JFrame
+{
+    public JPanel MAJfenetre;
+    private JLabel Table;
+    private JLabel ParametreModification;
+    private JLabel NouvelleValeur;
+    private JTextField TabletextField;
+    private JTextField ParametreModificationtextField;
+    private JTextField NouvelleValeurtextField;
+    private JButton ValiderButton;
+    private JButton retourButton;
+    
+    
+    //Constructeur
+        public MAJgraphique(){
+            
+        //Initialisation de tous les composants
+        JFrame MAJfenetre = new JFrame();
+        JButton ValiderButton=new JButton("Valider");
+        JButton retourButton= new JButton("Acceuil");
+        JLabel Table= new JLabel("Nom de la Table(Tableau)\n");
+        JLabel ParametreModification=new JLabel("Paramètre à modifier\n");
+        JLabel NouvelleValeur=new JLabel("Nouvelle valeur\n");
+        JTextField TabletextField = new JTextField();
+        TabletextField.setColumns(10);
+        JTextField ParametreModificationtextField = new JTextField();
+        ParametreModificationtextField.setColumns(10);
+        JTextField NouvelleValeurtextField = new JTextField();
+        NouvelleValeurtextField.setColumns(10);
+        
+        //Reglage du Layout
+        GridLayout gl= new GridLayout(4,2);
+        gl.setHgap(10);
+        gl.setVgap(10);
+        
+        //Mise en forme de la fenêtre
+        MAJfenetre.setTitle("Ecran de Mise à jour");
+        MAJfenetre.setSize(500,300);
+        MAJfenetre.setLayout(gl);
+        //ajout des composants
+        MAJfenetre.add(Table);
+        MAJfenetre.add(TabletextField);
+        MAJfenetre.add(ParametreModification);
+        MAJfenetre.add(ParametreModificationtextField);
+        MAJfenetre.add(NouvelleValeur);
+        MAJfenetre.add(NouvelleValeurtextField);
+        MAJfenetre.add(ValiderButton);
+        MAJfenetre.add(retourButton);
+        //Rend visible la fenêtre
+        MAJfenetre.setVisible(true);       
+    }
+}
